@@ -1,0 +1,24 @@
+{
+  "name": "family-grocery-api",
+  "version": "1.0.0",
+  "description": "A simple web API utilising mongodb to create a nice family experience for grocery managment",
+  "main": "index.js",
+  "author": "Eddie Englund <properllerbucher@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  }
+}
