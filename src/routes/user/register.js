@@ -10,7 +10,7 @@ const { getDB } = require('../../db/db');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 
-router.post('/', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   if (!req.body || !req.body.name || !req.body.password || !req.body.email || req.body.password.trim().length < 6)
     return res.status(400).send(ERROR_BAD_REQUEST);
 
