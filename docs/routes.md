@@ -2,9 +2,9 @@
 
 All the endpoints are set to got to https://domain.com/api/
 
-`Please, note that we do not accept any HTTP traffic. Must be HTTPS`
+`Please, note that we do not accept any HTTP traffic. Must be HTTPS!`
 
-And follow the strucutre /api/{category}/{operation}
+Endpoints will generally follow the strucutre /api/{category}/{operation}
 
 So for an example to register a user you would send a POST request to /api/users/register
 
