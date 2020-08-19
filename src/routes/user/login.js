@@ -4,7 +4,7 @@ const { getDB } = require('../../db/db');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 
-router.post('/', async (req, res) => {
+router.post('/login', async (req, res) => {
   if (!req.body || !req.body.email || !req.body.password) return res.status(500).send(ERROR_BAD_REQUEST);
 
   const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
