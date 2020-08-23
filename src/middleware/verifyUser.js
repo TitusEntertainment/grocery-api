@@ -11,7 +11,8 @@ const jwt = require('jsonwebtoken');
 /// }
 
 const verifyUser = async (req, res, next) => {
-  const authHeader = req.header('Authorization').split(' ');
+  let authHeader = req.header('Authorization');
+  if (authHeader) authHeader = authHeader.split(' ');
   if (!authHeader[1] || authHeader[1].length < 6) return res.status(401).send(ERROR_NOT_LOGGED_IN);
 
   if (authHeader[0] !== 'Bearer') return res.status(400).send(ERROR_INVALID_AUTHORIZATION_HEADER);
@@ -20,7 +21,6 @@ const verifyUser = async (req, res, next) => {
   try {
     const isValidToken = jwt.verify(token, process.env.SECRET_KEY);
     req.user = isValidToken;
-    console.log(req.user);
     next();
   } catch (error) {
     console.error(error);
