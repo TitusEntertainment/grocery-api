@@ -22,13 +22,10 @@ const verifyListItems = (list) => {
 
 const verifyInvites = (invites) => {
   const inviteSchema = yup.array().of(
-    yup.object().shape({
-      userId: yup
-        .string()
-        .required()
-        .test((value) => uuidValidate(value)),
-      isSent: yup.boolean().default(false),
-    }),
+    yup
+      .string()
+      .required()
+      .test((value) => uuidValidate(value)),
   );
 
   try {
