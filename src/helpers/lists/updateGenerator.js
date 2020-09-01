@@ -81,7 +81,7 @@ async function updateList(input) {
         updateSetData,
       },
       {
-        returnNewDocument: true,
+        returnOriginal: false,
       },
     );
   }
