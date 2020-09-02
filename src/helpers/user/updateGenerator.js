@@ -14,7 +14,7 @@ async function updateUser(input) {
   if (!updateSetData) return null;
 
   const user = await getDB().users.findOneAndUpdate(
-    { _id: input.user.data.userId },
+    { _id: input.user._id },
     {
       ...updateSetData,
     },

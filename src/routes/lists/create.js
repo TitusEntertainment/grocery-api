@@ -30,7 +30,7 @@ router.post('/create', verifyUser, async (req, res) => {
   const listId = uuidv4();
   const user = await getDB().users.findOneAndUpdate(
     {
-      _id: req.user.data.userId,
+      _id: req.data.userId,
     },
     {
       $addToSet: {
@@ -44,7 +44,7 @@ router.post('/create', verifyUser, async (req, res) => {
   const createdAt = new Date();
   const newList = await getDB().lists.insertOne({
     _id: listId,
-    userId: req.user.data.userId,
+    userId: req.user._id,
     listName: req.body.listName.trim(),
     createdAt,
     invites: req.body.invites || [],

@@ -1,5 +1,6 @@
-const { ERROR_NOT_LOGGED_IN, ERROR_INVALID_TOKEN } = require('../helpers/error.json');
+const { ERROR_NOT_LOGGED_IN, ERROR_INVALID_TOKEN, ERROR_CANNOT_FIND_USER } = require('../helpers/error.json');
 const jwt = require('jsonwebtoken');
+const { getDB } = require('../db/db');
 
 /// Check's authHeader with template Bearer token and validates the token
 /// If the the format is invalid we send ERROR_INVALID_TOKEN or if there isn't any token we send ERROR_NOT_LOGGED_IN
@@ -20,7 +21,10 @@ const verifyUser = async (req, res, next) => {
 
   try {
     const isValidToken = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = isValidToken;
+    const user = await getDB().users.findOne({ _id: isValidToken.data.userId });
+    if (!user) throw Error(ERROR_CANNOT_FIND_USER);
+    req.user = user;
+    console.log(req.user);
     next();
   } catch (error) {
     console.error(error);

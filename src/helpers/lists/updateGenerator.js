@@ -44,14 +44,13 @@ function updateAddToSetGenerator(input) {
 async function updateList(input) {
   const updateSetData = updateSetGenerator(input);
   const updateAddToSetData = updateAddToSetGenerator(input);
-
   let list;
 
   if (!updateSetData && !updateAddToSetData) return null;
 
   if (updateSetData && updateAddToSetData) {
     list = await getDB().lists.findOneAndUpdate(
-      { _id: input.body.listId, userId: input.user.data.userId },
+      { _id: input.body.listId, userId: input.user._id },
       {
         ...updateSetData,
         ...updateAddToSetData,
@@ -64,7 +63,7 @@ async function updateList(input) {
 
   if (!updateSetData || updateAddToSetData) {
     list = await getDB().lists.findOneAndUpdate(
-      { _id: input.body.listId, userId: input.user.data.userId },
+      { _id: input.body.listId, userId: input.user._id },
       {
         updateAddToSetData,
       },
@@ -76,7 +75,7 @@ async function updateList(input) {
 
   if (updateSetData || !updateAddToSetData) {
     list = await getDB().lists.findOneAndUpdate(
-      { _id: input.body.listId, userId: input.user.data.userId },
+      { _id: input.body.listId, userId: input.user._id },
       {
         updateSetData,
       },
