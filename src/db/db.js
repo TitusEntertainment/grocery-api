@@ -19,6 +19,7 @@ class Database {
         this.db = client.db(this.db_name);
         this.users = this.db.collection(config.collections.users);
         this.lists = this.db.collection(config.collections.lists);
+        this.friendReq = this.db.collection(config.collections.friendReq);
 
         resolve(this);
       });

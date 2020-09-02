@@ -1,6 +1,7 @@
 {
   "collections": {
-    "users": "users",
-    "lists": "lists"
+    "users": "Users",
+    "lists": "Shopping-Lists",
+    "friendReq": "Friend-Requests"
   }
 }

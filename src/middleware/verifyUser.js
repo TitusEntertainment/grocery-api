@@ -24,7 +24,6 @@ const verifyUser = async (req, res, next) => {
     const user = await getDB().users.findOne({ _id: isValidToken.data.userId });
     if (!user) throw Error(ERROR_CANNOT_FIND_USER);
     req.user = user;
-    console.log(req.user);
     next();
   } catch (error) {
     console.error(error);

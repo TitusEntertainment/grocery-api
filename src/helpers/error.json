@@ -5,7 +5,7 @@
     "error_code": 401
   },
   "ERROR_BAD_REQUEST": {
-    "message": "Missing or invalid parameters!",
+    "message": "Bad request",
     "ok": false,
     "error_code": 400
   },
