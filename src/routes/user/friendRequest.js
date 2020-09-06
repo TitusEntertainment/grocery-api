@@ -12,7 +12,7 @@ router.post('/friendRequest', verifyUser, async (req, res) => {
     toBeFollowed: req.body.followUserId,
   });
 
-  if (alreadyExists !== null) return res.status(500).send(ERROR_BAD_REQUEST);
+  if (alreadyExists !== null) return res.status(ERROR_BAD_REQUEST.error_code).send(ERROR_BAD_REQUEST);
 
   const frId = uuidv4();
   const today = new Date();
